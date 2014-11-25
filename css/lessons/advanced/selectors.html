@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../../examples/button/style.css" rel="stylesheet" type="text/css">
+		<title>CSS - Advanced Selectors</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>CSS Advanced Selectors</h1>
+			<p><a href="../basic/selectors.html">Here</a> you learned about how to use the three basic CSS selectors: element, class, and ID.<p>
+			<p>On this page you'll learn how to use more advanced selectors.</p>
+			<h2>Pseudo-class</h2>
+			<p>Pseudo-classes are used to make your HTML elements more interactive. There are many different types of pseudo-classes, such as:
+				<ul>
+					<li>hover</li>
+					<li>focus</li>
+					<li>active</li>
+					<li>and many more . . .</li>
+				</ul>
+			</p>
+			<p>The format below is used for pseudo-classes:</p>
+			<pre style="white-space:nowrap;">
+				<code>
+					<span>selector:pseudo-class {</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;property:value;</span><br />
+					<span>}</span>
+				</code>
+			</pre>
+			<p>For the sake of example, let's create a button class.</p>
+			<pre style="white-space:nowrap;">
+				<code>
+					<span>.button {</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;background-color: #fff;</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;color: black;</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;text-decoration: none;</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;padding: 4px 8px;</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #ccc;</span><br />
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 4px;</span><br />
+					<span>}</span>
+				</code>
+			</pre>
+			<p>The output of this can be found <a href="../../examples/button/index.html">here</a></p> 
+			<!--<pre style="white-space:nowrap;">
+				<span>.button:hover {</span><br />
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;property:value;</span><br />
+				<span>}</span>
+			</pre>-->
+		</div>
+	</body>
+</html>
