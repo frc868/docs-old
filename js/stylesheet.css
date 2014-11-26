@@ -12,3 +12,17 @@
 	margin-left: 1em;
 	margin-right: 1em;
 }
+pre {
+	display: inline-block;
+	color: #0000FF;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+h4 {
+	display: inline-block;
+	color: #0000FF;
+	color: red;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
