@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<!--Author: Tiger Huang -->
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
@@ -20,14 +21,16 @@
 		Important words will be in this <b>style</b><br/><br/>
 
 		The tone of this set will be informal and conversational.
-		It's cool if this is you're first time programming and I hit you with a wall of technical terms.<br/>
+		It's not cool if this is you're first time programming and I hit you with a wall of technical terms.<br/>
 		If you're viewing this as the split screen, the interactive javascript playground is on the right side.
 
 		<h2>Actual Introduction</h2>
 		Yay, we're finally going to start javascript.
 		Javascript is made of <b>statements</b>. Each statement must end with a <b>semicolon</b><pre>;</pre><br/>
-		<h4>Repeat, each statement MUST end with a semicolon.</h4><br/><br/>
+		<h4>Repeat, each statement MUST end with a semicolon;</h4><br/>
+		Don't forget this, I'll be watching :)<br/><br/>
 
+		<h2>Functions</h2>
 		Statements can do many things, one of these things is calling <b>functions</b>. I will introduce how to create functions later, but I will first teach you how to call functions.<br/><br/>
 		Copy and paste the following statement into the text editor on the right.<br/>
 		<pre>alert("Hello World");</pre><br/>
@@ -46,5 +49,135 @@
 			<li>Try changing the argument (<pre>"Hello World"</pre>). What happens here?</li>
 		</ul>
 
+		<h2>Variables Introduction</h2>
+		<pre>var</pre> declares a <b>variable</b>. It tells javascript that you want to use that name.<br/>
+		This is an example of a valid declaration: <pre>var foo;</pre><br/>
+		Now we can store stuff in it like this: <pre>foo = "hi";</pre><br/>
+		You can now use that variable in places: <pre>alert(foo);</pre><br/>
+		Paste those last 3 lines of code in and try it!<br/>
+		(You can also combine declaring and setting a variable into one statement like this: <pre>var foo = "hi";</pre>)<br/><br/>
+		
+		You can see that whatever you set <pre>foo</pre> equal to gets displayed.<br/>
+		I've you've been paying close attention, you'll notice that the text thats being shown has <b>quotes</b> around it.<br/>
+		This is a special type of variable, its called a <h4>string</h4>.<br/>
+		That's just a fancy way of saying <b>text</b>. The quotes are simply there to tell javascript that you are making a string.<br/>
+		Without those, javascript would get confused and think you're trying to use a <b>variable</b>.<br/>
+		<h4>This is a string: </h4><pre>"foo_bar"</pre><br/>
+		<h4>This is a variable: </h4><pre>foo_bar</pre><br/><br/>
+
+		Side note, <b>variable names</b> can be made of <b>letters, numbers, and underscores</b> but have to start with <b>letters or underscores</b>.<br/>
+		<h4>The names cannot contain spaces</h4><br/>
+		Valid variable name examples: <pre>foo,bar,_bar,foo_bar,dungeon6,stuff_6</pre><br/>
+		Invalid variable name examples: <pre>235x,I hate spaces,#taco,@$^%$a5</pre><br/><br/>
+
+		Quick exercises
+		<ul>
+			<li>Try putting quotes around <pre>foo</pre> in the <pre>alert</pre>. What happens? Can you explain why this happens?</li>
+		</ul>
+		
+		<h2>My box analogy</h2>
+		You can think of each variable as a <b>box</b>.<br/>
+		Because it's a box, it can hold many different kinds of stuff/data.<br/>
+		Keep this in mind as we move on.<br/>
+		I'm not sure where to put this, so I'm putting it here:<br/>
+		<pre>+</pre> <h4>adds</h4> together two variables. Depending on what type they are determines how they will be added together.<br/>
+
+		<h2>Data types</h2>
+		<ul>
+			<li><b>Strings</b><br/>
+				I briefly mentioned these earlier. You can think of these like words on a notecard. When you add together strings, they are added to the end of each other. It's like taping one notecard to the end of another.<br/>
+				Strings always have either <h4>single quotes</h4> or <h4>double quotes</h4> around them!<br/>
+				<pre>"This is a string"
+'This_is_another_string'
+This is not a string</pre></br>
+				<pre>4234</pre> <b>not a string</b><br/>
+				<pre>"3234"</pre> <b> this is a string</b><br/>
+				<h4>Even though the last one looks like a number, because it has double quotes, the last one IS A STRING</h4>
+				
+				Try this code segment:<br/>
+				<pre>var foo = "Hello ";
+var bar = "World!";
+alert(foo + bar);</pre><br/>
+				Notice how the strings are added.<br/>
+				Try this one if you don't believe me on the number strings:<br/>
+				<pre>var foo = "23";
+var bar = "24";
+alert(foo + bar);</pre><br/>
+				We'll talk about adding real numbers next.<br/>
+				
+			</li>
+			<li><b>Numbers</b><br/>
+				Imagine these as a certian number of marbles. When you pour marbles from different boxes into one, you get the sum of the marbles.
+				This is what happens when you add numbers. Numbers look like, well, numbers.<br/>
+				All of these are numbers:<br/>
+				<pre>345
+786.21
+-546.32543
+-35
+0
+6.02E-23
+3.00E8</pre><br/>
+				The last two are scientific notation by the way.<br/>
+				These are NOT numbers:<br/>
+				<pre>2435x
+324E
+43.21.65</pre><br/>
+				Adapt the previous examples to add numbers (From now on, I'm probably not going to put every example in, because this lesson is already getting long). <br/>
+				Try doing other operations on the numbers (<pre>+ - * /</pre>).<br/>
+				You can also use <b>parentheses</b> to group expressions, just like in math class!<br/>
+				There's one more function I'd like you to try out:<br/>
+				<pre>var x = Math.sqrt(10);
+alert(x);</pre><br/>
+				Can you guess what this does?<br/>
+				You might need this later. Just sayin'.<br/>
+			</li>
+			<li><b>Objects</b><br/>
+				Images these as a box with dividers. They can hold many other variables and functions.<br/>
+				We'll cover these in a later chapter.
+			</li>
+		</ul>
+
+		<h2>Setting Variables</h2>
+		You can set variables equal to something. The variable on the left is always being set. (assume I've declared all variables already)<br/>
+		<pre>x = y * z;</pre><br/>
+		This statement sets x equal to the result of y times z.<br/>
+		<h4>The left side expression MUST be a single variable</h4><br/>
+		For example, this expression will not work:<br/>
+		<pre>x + t = y * z</pre><br/>
+		This javascript, not your graphing calculator (Not saying I don't <i>want</i> those features :)<br/>
+
+		<h2>Exercises</h2>
+		<ul>
+			<li><b>Mean calculator</b><br/>
+				I'm assigning this cause I'm mean (har har har :) Your task is to write a program that calculates the mean of four numbers.<br/>
+				I've started it here for you:<br/>
+				<pre>var n1 = 2;
+var n2 = 54;
+var n3 = 23;
+var n4 = 92;</pre><br/>
+				Hoot like a pterodactyl when you're done so I know.<br/>
+			</li>
+			<li><b>Distance calculator</b><br/>
+				Your task is to calculate the distance between two ordered pairs.<br/>
+				I've started it here:<br/>
+				<pre>var x1 = 2;
+var y1 = 23;
+var x2 = 9;
+var y2 = 1;</pre><br/>
+				Make more creative animal sounds when you're done!<br/>
+			</li>
+			<li><b>Sentance maker</b><br/>
+				I've accidentally blown my sentances into fragments :) I need you to help me put them back together.<br/>
+				<pre>var word1 = "You";
+var word2 = "are";
+var word3 = "very";
+var word4 = "silly";</pre><br/>
+				Display it as one sentance. Don't forget spaces or the period!
+				Make robot sounds when you're done!<br/>
+		</ul>
+		<div class="link_box">
+			<a href="index.html">Table of Contents</a>
+			<a href="2.html">Next</a>
+		</div>
 	</body>
 </html>
