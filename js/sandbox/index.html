@@ -2,9 +2,9 @@
 <!--Author: Tiger Huang -->
 <html class="full_screen">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" href="sandbox.css"/>
 		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>JS Sandbox</title>
 	</head>
 	<body class="full_screen">
@@ -18,12 +18,13 @@
 		<div id="sandbox_output">
 
 		</div>
+
+		<script src="../ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var editor = ace.edit("sandbox_editor");
+			editor.setTheme("ace/theme/twilight");
+			editor.getSession().setMode("ace/mode/javascript");
+		</script>
+		<script src="sandbox.js"></script>
 	</body>
-	<script src="../ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-	<script>
-		var editor = ace.edit("sandbox_editor");
-		editor.setTheme("ace/theme/twilight");
-		editor.getSession().setMode("ace/mode/javascript");
-	</script>
-	<script src="sandbox.js"></script>
 </html>

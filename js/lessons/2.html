@@ -2,19 +2,228 @@
 <!--Author: Tiger Huang -->
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
-		<title>Lesson 2: Advanced Javascript Syntax</title>
+		<title>Lesson 2: Variables, Functions, Datatypes, and Objects</title>
 	</head>
 	<body>
-		<h1>Lesson 2: Advanced Javascript Syntax</h1>
+		<h1>Lesson 2: Variables, Functions, Datatypes, and Objects</h1>
 		<div class="link_box">
 			<a href="1.html">Back</a>
 			<a href="index.html">Table of Contents</a>
 			<a href="3.html">Next</a>
 		</div>
-		<h2>Introduction</h2>
-		<p>Javascript is a very diverse langauge that supports many different styles of programming natively.</p>
-		<p>Javascript programs are basically lists of instructions for the computer to follow.</p>
-		<p>Each statement must end with a semicolon <b>;</b></p>
+
+		<h2>Intro to this chapter</h2>
+		We only just scratched the surface of the power of Javascript in the last chapter.
+		The purpose of this chapter is to <s>correct some lies</s> clarify some details I skimmed over earlier.<br/>
+
+		<h2>Functions in Depth</h2>
+		Last chapter, I only skimmed over what functions are.<br/>
+		<h4>A function is a piece of code that can be called over and over.</h4><br/>
+		This reduces the amount of duplicated code that you have, and also helps to group up things into logical blocks.<br/>
+		Lets say you notice that you're calculating the mean a lot in your program. You could write a function to do this for you so you wouldn't need to rewrite your mean code every time.<br/>
+		<pre>function mean(n1,n2,n3,n4) {
+  var sum = n1 + n2 + n3 + n4;
+  return sum/4;
+}</pre><br/>
+		Copy and paste that into the editor, and then call the function like this:<br/>
+		<pre>alert(mean(1,2,4,5));</pre><br/><br/>
+		
+		Let's analyze what happened there:
+		<ul>
+			<li><pre>function</pre> tells Javascript we're planning on making a function.</li>
+			<li><pre>mean</pre> tells Javascript the name of the function we're making. The same rules for variable names apply to function names.</li>
+			<li><pre>(n1,n 2,n3,n4)</pre> tells javascript the <b>name</b> of the arguments we're accepting. <h4>Each name MUST be seperated by commas.</h4><br/>
+				When you call this function, the first argument gets assigned to <pre>n1</pre>, the second to <pre>n2</pre> and so on.</li>
+			<li><pre>{ ... }</pre> contains the body of the function. all the statements contained in here are run when you call the function.</li>
+			<li><pre>var sum = n1 + n2 + n3 + n4;</pre> adds up everything. You can see how we use the arguments that you declared at the top.</li>
+			<li><pre>return sum/4;</pre> does what is sounds like. It <b>returns</b> the value to where it was called from. You can think of it like this, after you run a function, it gets replaced by whatever it returns. In this case, <pre>alert(mean(1,2,4,5));</pre> gets replaced with <pre>alert(3);</pre><br/>
+				To illustrate how this works, you can try this:<br/>
+				<pre>var x = mean(1,2,4,5);
+alert(x);</pre><br/>
+				You can see that <pre>x</pre> gets set to the <h4>return value</h4> of <pre>mean</pre>.
+			</li>
+		</ul>
+		Not all functions have to return something. For example, <pre>alert</pre> doesn't return anything. It doesn't have to because it displays stuff directly to the screen.<br/><br/>
+		
+		Quick Exercises
+		<ul>
+			<li>Write you own function that calculates the sum of 6 numbers.</li>
+			<li>Write your own function that takes the mean of 6 numbers. Use your sum function that you just wrote to help you</li>
+		</ul>
+
+		<h2>More function examples</h2>
+		I mentioned earlier that the arguments are assigned in order.<br/>
+		<h4>Only the ORDER of the arguments matter!!!</h4><br/>
+		Take this example:<br/>
+		<pre>function sub(a,b) {
+  return a - b;
+}
+var a = 5;
+var b = 3;
+alert(sub(b,a));</pre><br/>
+		Keeping in mind what I said earlier, what will this display, <pre>2</pre> or <pre>-2</pre>?<br/>
+		Try it out, see what it gives.<br/><br/>
+
+		If you guessed <pre>-2</pre>, you are right!<br/>
+		You might object, but <pre>a</pre> is equal <pre>5</pre> and <pre>b</pre> is equal to <pre>3</pre>!<br/>
+		However, since you passed <pre>b</pre>, which was equal to <pre>3</pre> in as the first argument, the <b>argument</b> <pre>a</pre> is set to <pre>3</pre> and not <pre>5</pre><br/>
+		<h4>These are 2 DIFFERENT variables.<br/>
+			Code OUTSIDE of a function has no effect on the code INSIDE the function
+		</h4>
+		To rephrase, the variables outside of a function no longer exist when you're inside of a function (except in special cases, called <b>closures</b>).<br/>
+
+		<h2>Closures</h2>
+		I didn't want this section here, but I feel that it is necessary in order to understand functions.<br/>
+		If a variable isn't found inside a function, Javascript will look right outside of the function to see if it exists. When you do this, its called a closure.<br/>
+		Take this example:<br/>
+		<pre>var bar = "Hello";
+function foo() {
+  alert(bar);
+}
+foo();</pre><br/>
+		Why does this work?<br/>
+		This answer is that you're making use of a <b>closure</b>. Since you haven't declared <pre>bar</pre> anywhere inside the function <pre>foo</pre>, and its not an <b>argument</b>, Javascript looks right before to see if it can find <pre>bar</pre>. It does, and it uses <pre>"Hello";</pre> as the value of bar.<br/>
+		If you modified this example:<br/>
+		<pre>var bar = "Hello";
+function foo() {
+  var bar = "World";
+  alert(bar);
+}
+foo();</pre><br/>
+		You are no longer using a <b>closure</b> since you declare <pre>bar</pre> to be <pre>"World"</pre> <b>inside</b> of the function.<br/>
+		<b>These last three sections very important!!! If you don't get this, play around with these sections until it makes sense.</b><br/>
+
+		<h2>Variables and Datatypes</h2>
+		We've gone over several data types that we can store in variables:
+		<ul>
+			<li>Strings (which are a special case of objects)</li>
+			<li>Numbers</li>
+			<li><b>Functions</b></li>
+			<li>Objects (I promise we'll get there)</li>
+			<li>Arrays (This'll be in the next chapter)</li>
+		</ul>
+		Notice how I've listed <b>functions</b> as a datatype, keep this in mind, it'll be useful later ;)<br/>
+
+		<h2>More functions</h2>
+		You know how I introduced how to create functions earlier? Well, there's another way to do it.<br/>
+		This is the normal way:<br/>
+		<pre>function sayFoo() {
+  alert("Foo");
+}
+sayFoo();</pre><br/>
+		This is another way:<br/>
+		<pre>var sayFoo = function() {
+  alert("Foo");
+}
+sayFoo();</pre><br/>
+		<b>They do the SAME thing!!!</b><br/>
+		<h4>This clearly demonstrates that functions are treated no differently from other kinds of data.</h4><br/>
+		<pre>function foo() {</pre> is just shorthand for <pre>var foo = function() {</pre><br/>
+		We just like to use the first one because <s>we're lazy</s> it's convenient.<br/>
+		Because <b>functions</b> are just data that you can store in variables, you can do some pretty crazy stuff with them.<br/>
+		<pre>function add(n1,n2,n3) {
+  return n1 + n2 + n3;
+}
+function mul(n1,n2,n3) {
+  return n1 * n2 * n3;
+}
+function combine3(fn,n1,n2,n3,n4,n5,n6,n7,n8,n9) {
+  return fn(fn(n1,n2,n3),fn(n4,n5,n6),fn(n7,n8,n9));
+}
+alert(combine3(add,1,2,3,4,5,6,7,8,9));
+alert(combine3(mul,1,2,3,4,5,6,7,8,9));</pre><br/>
+		Try running this!<br/><br/>
+
+		Let's break down what happens:
+		<ul>
+			<li>You first create a variable named <pre>add</pre> that contains a function</li>
+			<li>You create another variable named <pre>mul</pre> that contains another function.</li>
+			<li>The first two both take 3 arguments and do stuff with them</li>
+			<li>You create a third variable named <pre>combine3</pre> that also contains a function<br/>
+				You can see that this function <b>takes another function as an argument</b> and 9 numbers.<br/>
+				It then calls the function the way you normally call functions: <pre>fn(</pre>
+			</li>
+		</ul>
+
+		Quick Exercises:
+		<ul>
+			<li>Create a function that takes another function and prints out the result. For example, if I have:<br/>
+				<pre>function getFoo() {
+  return "Foo";
+}</pre><br/>
+				and I pass <pre>getFoo</pre> into the function, it should display <pre>Foo</pre> on my screen.
+			</li>
+		</ul>
+		
+		<h2>Objects and Classes</h2>
+		Javascript objects tend to be confusing to beginners because <h4>there is no one right way to do it.</h4><br/>
+		Objects are just collections of variables.<br/>
+		These variables contained within the object are called <b>fields</b><br/>
+		Here is a quick example:<br/>
+		<pre>var foo = {color:"red",number:5};
+var color = "green";
+alert(foo.color);
+alert(foo.number);
+alert(color);
+foo.color = "blue";
+alert(foo.color);
+alert(color);</pre><br/>
+		Let's break down what happened there:<br/>
+		<ul>
+			<li><pre>{...};</pre> creates a new object.</li>
+			<li><pre>color:"red"</pre> set the value of the <pre>color</pre> field inside of <pre>foo</pre></li>
+			<li><pre>number:"5"</pre> does likewise to <pre>number</pre></li>
+			<li><pre>var color = "green";</pre> sets the value of <pre>color</pre> to <pre>"green"</pre>.</li>
+			<li><pre>foo.color = "blue";</pre> sets the value of the <pre>color</pre> field inside of <pre>foo</pre> to <pre>"blue"</pre></li>
+		</ul>
+		<h4>The variables/fields owned by foo are seperate from variable found outside of foo.</h4>
+		You read and write to object fields by doing <pre>objectName.fieldName</pre>. That is shown with <pre>alert(foo.color);</pre> and <pre>foo.color = "blue";</pre><br/>
+		If you look closely at the outputs, you will see that <pre>color</pre> and <pre>foo.color</pre> are <b>completely</b> different.<br/>
+		<h4>You can think of objects as representing real objects.</h4><br/>
+		If I have a car, I might use this object:<br/>
+		<pre>var carA = {color:"red",size:"compact",hp:100,speed:60}</pre><br/>
+		This is what makes objects so useful.<br/>
+		You can also assign <b>functions</b> to fields!!!<br/>
+		If you recall in the last chapter, I used <pre>Math.sqrt(number)</pre><br/>
+		It turns out that <pre>Math</pre> is a built in object that contains many useful fields.<br/>
+		I have a short list of them here:<br/>
+		<ul>
+			<li><pre>PI</pre> I'm not even going to bother explaining this one.</li>
+			<li><pre>sin(t)</pre> returns the sine of <pre>t</pre>, uses radians.</li>
+			<li><pre>cos(t)</pre> returns the cosine of <pre>t</pre>, uses radians.</li>
+			<li><pre>pow(b,p)</pre> returns <pre>b</pre> raised to the <pre>p</pre> power.</li>
+			<li><pre>sqrt(n)</pre> returns the square root of <pre>n</pre>.</li>
+			<li><pre>round(n)</pre> returns <pre>n</pre> rounded to the nearest integer.</li>
+		</ul>
+
+		<h2>Adding stuff together</h2>
+		When adding a <b>string</b> to a <b>number</b>, the number gets converted to a string first.<br/>
+		Look at these examples<br/>
+		<pre>alert("1" + "2");
+alert("1" + 2);
+alert(1 + 2);</pre><br/>
+		Only the last one is added like numbers because that is the only one where both of them are numbers.<br/>
+		The general rule is, <h4>if you're adding stuff together, numbers will get converted to strings unless you're adding together only numbers.</h4><br/>
+		Oh, one more thing:<br/>
+		<h4>DO NOT add strings to other non string objects.</h4><br/>
+		Javascript will not convert objects to strings automatically. Always pull the object apart yourself.<br/>
+
+		<h2>Exercises</h2>
+		<ul>
+			<li>Write a function that displays all the fields of the car, labeled.<br/>
+				The output should look like this:<br/>
+				<pre>color = red
+size = compact
+hp = 100
+speed = 60</pre></li>
+		</ul>
+
+		<div class="link_box">
+			<a href="1.html">Back</a>
+			<a href="index.html">Table of Contents</a>
+			<a href="3.html">Next</a>
+		</div>
 	</body>
 </html>
