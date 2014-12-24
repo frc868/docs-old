@@ -2,8 +2,8 @@ documentation
 =============
 This repository is intended to be used for division specific documentation. All documentation for code needs to be within their own respective repositories.
 
-## This Branch
-This branch is used for a website representation of the documents in this repository. For example, this may include lessons, examples, forms, and more, in a presentable Web format for ultimate cross-compatibility. The raw or plain-text documents are available in the master branch or in the links provided on each page.
+## Web Representation
+You can go [here](http://frc868.github.io/documentation) for a website representation of the documents in this repository. For example, this may include lessons, examples, forms, and more, in a presentable Web format for ultimate cross-compatibility. The raw or plain-text documents are available in the repo view or in various links provided on pages.
 
 ## Lessons
 Any lesson plans should put in this repository. The purpose behind this is to give future leadership a basis on what to cover, how much to cover, and for how long. Any projects to be given should be in here as well.
