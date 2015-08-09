@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<title>TechHOUNDS Signup Form</title>
 	</head>
 	<body>
-		<h1>How the signup form works</h1>
+		<h1>The TechHOUNDS Signup Form</h1>
 		<p>This is an article/tutorial on how to use the TechHOUNDS Signup Application Form. By the end of this you should know how to make changes and how to make them look pretty and stuff.</p>
+		<h2>Some Background</h2>
+		<p>The website (at the time of this writing) does not have its own MySQL, or an equivalent, database. TechHOUNDS also doesn't have a dedicated server computer or anything that data can be submitted to at any point in time. So, we need a different method to store the signup data. The easiest solution is by making the form in <b>Google Forms</b>.</p>
+		<h3>How This Works</h3>
+		<p>By using Google Forms, any data that gets submitted through that form is submitted to a Google Spreadsheet. We can then take this form and apply custom CSS and JS to it as per our choosing, while maintaining the same functionality. So by creating a Google Form, taking the form's HTML output and putting that HTML somewhere else (such as the TechHOUNDS website), it retains the functionality while also giving us room to customize it.</p>
+		<img src="img/1.png">
+		<p>The key to making this work is visible in the above screenshot. In the first line of the HTML code in the picture, there is the line <code>&lt;form action="https://docs.google.com/forms/..."&gt;</code></p>
 	</body>
 </html>
